@@ -6,28 +6,28 @@ layout: default
 
 <main class="main  container">
 
-  <div class="content">
+    <div class="content">
 
-    <article class="article  article--page  typeset">
+        <article class="article  article--page  typeset">
 
-      {% if paginator.posts %}
-        {% assign collectiondata = site.collections | where: "label", page.collectionpage | first %}
-        <h1>{{ collectiondata.title }}</h1>
-        {{ collectiondata.description | markdownify }}
+            {% if paginator.posts %}
+            {% assign collectiondata = site.collections | where: "label", page.collectionpage | first %}
+            <h1>{{ collectiondata.title }}</h1>
+            {{ collectiondata.description | markdownify }}
 
-      {% else %}
-        <h1>{{ page.title }}</h1>
-        {{ content }}
-        
-      {% endif %}
+            {% else %}
+            <h1>{{ page.title }}</h1>
+            {{ content }}
 
-    </article>
+            {% endif %}
 
-    {% include post-list.html %}
+        </article>
 
-  </div>
+        {% include post-list.html %}
 
-  {% if page.aside == true %}{% include site-aside.html %}{% endif %}
+    </div>
+
+    {% if page.aside == true %}{% include site-aside.html %}{% endif %}
 
 </main>
 
