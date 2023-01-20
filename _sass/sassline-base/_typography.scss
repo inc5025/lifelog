@@ -1,6 +1,8 @@
 // Typography
 // ---------------------------------------
 
+@use "sass:math";
+
 // Setting root sizes and base styles.
 html {
   @include rootsize;
@@ -36,17 +38,17 @@ a {
 
   // Nice underlines for text links.
   p a, li a {
-    background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%,$linkColour 50%);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, $linkColour 50%);
     background-position: 0 93%;
     background-repeat: repeat-x;
     background-size: 100% 0.15rem;
     text-shadow: 0.1rem 0 $backgroundColour,
-                 0.15rem 0 $backgroundColour,
-                -0.1rem 0 $backgroundColour,
-                -0.15rem 0 $backgroundColour;
+    0.15rem 0 $backgroundColour,
+    -0.1rem 0 $backgroundColour,
+    -0.15rem 0 $backgroundColour;
 
     &:hover, &:active, &:focus {
-      background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%,$hoverColour 50%);
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, $hoverColour 50%);
     }
   }
 
@@ -263,7 +265,7 @@ a {
   }
 
   .delta + .caption, .epsilon + .caption, .zeta + .caption {
-    margin-top: 0rem;
+    margin-top: 0;
   }
 
   // Quotes.
@@ -278,8 +280,8 @@ a {
       $get-scale: map-get($modular-scale, scale-0);
       $get-size: map-get($get-scale, zeta);
       $rootsize: nth($sizes, 1);
-      $baseline-shift: #{($get-size / 2 * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001};
-      $baseline-push: #{3 - (($get-size * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001)};
+      $baseline-shift: #{calc(($get-size / 2 * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001)};
+      $baseline-push: #{calc(3 - (($get-size * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001))};
 
       margin-bottom: #{$baseline-push}rem;
       padding-bottom: #{$baseline-shift}rem;
@@ -288,10 +290,10 @@ a {
         $get-scale: map-get($modular-scale, scale-#{$i - 1});
         $get-size: map-get($get-scale, zeta);
         $rootsize: nth($sizes, $i);
-        $baseline-shift: #{($get-size / 2 * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001};
-        $baseline-push: #{3 - (($get-size * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001)};
+        $baseline-shift: #{calc(($get-size / 2 * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001)};
+        $baseline-push: #{calc(3 - (($get-size * ((2 * $rootsize / $get-size) - map-get($bodytype, cap-height))) / $rootsize + 0.00001))};
 
-        @media screen and (min-width: nth($points, $i) / 16 * 1em ) {
+        @media screen and (min-width: math.div(nth($points, $i), 16) * 1em) {
           margin-bottom: #{$baseline-push}rem;
           padding-bottom: #{$baseline-shift}rem;
         }
@@ -305,7 +307,7 @@ a {
 
   // Horizontal rule.
   hr {
-    background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0) 50%,$captionColour 50%);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, $captionColour 50%);
     background-position: 0 50%;
     background-repeat: repeat-x;
     background-size: 100% 0.15rem;
@@ -325,7 +327,6 @@ a {
     display: block;
     margin-bottom: 2rem;
     padding: 1rem;
-    white-space: pre;
     white-space: pre-wrap;
     word-break: break-all;
     word-wrap: break-word;

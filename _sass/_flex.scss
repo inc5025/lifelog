@@ -67,7 +67,9 @@
   display: flex;
 }
 
-%flexbox { @include flexbox; }
+%flexbox {
+  @include flexbox;
+}
 
 //----------------------------------
 
@@ -79,7 +81,9 @@
   display: inline-flex;
 }
 
-%inline-flex { @include inline-flex; }
+%inline-flex {
+  @include inline-flex;
+}
 
 //----------------------------------------------------------------------
 
@@ -113,8 +117,11 @@
   -ms-flex-direction: $value;
   flex-direction: $value;
 }
-  // Shorter version:
-  @mixin flex-dir($args...) { @include flex-direction($args...); }
+
+// Shorter version:
+@mixin flex-dir($args...) {
+  @include flex-direction($args...);
+}
 
 //----------------------------------------------------------------------
 
@@ -135,8 +142,8 @@
   -moz-flex-wrap: $value;
   @if $value == nowrap {
     -ms-flex-wrap: none;
-  } @else { 
-    -ms-flex-wrap: $value; 
+  } @else {
+    -ms-flex-wrap: $value;
   }
   flex-wrap: $value;
 }
@@ -252,7 +259,7 @@
 // http://w3.org/tr/css3-flexbox/#flex-property
 
 @mixin flex($fg: 1, $fs: null, $fb: null) {
-    
+
   // Set a variable to be used by box-flex properties
   $fg-boxflex: $fg;
 
@@ -299,7 +306,7 @@
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
   } @else if $value == space-around {
-    -ms-flex-pack: distribute;    
+    -ms-flex-pack: distribute;
   } @else {
     -webkit-box-pack: $value;
     -ms-flex-pack: $value;
@@ -308,8 +315,11 @@
   -moz-justify-content: $value;
   justify-content: $value;
 }
-  // Shorter version:
-  @mixin flex-just($args...) { @include justify-content($args...); }
+
+// Shorter version:
+@mixin flex-just($args...) {
+  @include justify-content($args...);
+}
 
 //----------------------------------------------------------------------
 
